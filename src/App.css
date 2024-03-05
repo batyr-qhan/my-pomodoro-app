@@ -1,8 +1,28 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
+  height: 100vh;
+}
+
+#root > div {
+  height: 100%;
+}
+
+.fontThemePrimary {
+  font-family: "Kumbh Sans", sans-serif;
+  color: #fff;
+}
+
+.fontThemeSecondary {
+  font-family: "Roboto Slab", sans-serif;
+  color: #d7e0ff;
+}
+
+.fontThemeThird {
+  font-family: "Space Mono", sans-serif;
+  color: #646cff;
 }
 
 .timer-container {
