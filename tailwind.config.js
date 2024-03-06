@@ -19,6 +19,7 @@ export default {
       "black-color": "#000000",
       "light-gray-color": "#E3E1E1",
       "transparent-color": "transparent",
+      "default-gray-color": "#eff1fa",
     },
     fontFamily: {
       kumbhSans: ["Kumbh Sans", "sans-serif"],
