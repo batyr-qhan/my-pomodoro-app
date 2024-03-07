@@ -17,10 +17,10 @@ const ModesPanel: React.FC<MyComponentProps> = ({
 }) => {
   return (
     <nav className="mb-12 font-bold text-[#1E213F]">
-      <ul className="flex justify-around rounded-full bg-secondary-dark-color p-2">
+      <ul className="flex justify-around rounded-full bg-color-dark-secondary p-2">
         <li
           className={`flex-1 p-4 cursor-pointer ${
-            currentMode === "pomodoro" && "bg-first-theme-primary-color"
+            currentMode === "pomodoro" && "bg-color-primary"
           }  rounded-full`}
         >
           <a
@@ -39,7 +39,7 @@ const ModesPanel: React.FC<MyComponentProps> = ({
         </li>
         <li
           className={`flex-1 p-4 cursor-pointer rounded-full ${
-            currentMode === "shortBreak" && "bg-first-theme-primary-color"
+            currentMode === "shortBreak" && "bg-color-primary"
           }`}
         >
           <a
@@ -57,7 +57,7 @@ const ModesPanel: React.FC<MyComponentProps> = ({
         </li>
         <li
           className={`flex-1 p-4 cursor-pointer rounded-full ${
-            currentMode === "longBreak" && "bg-first-theme-primary-color"
+            currentMode === "longBreak" && "bg-color-primary"
           }`}
         >
           <a

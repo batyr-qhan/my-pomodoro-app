@@ -6,15 +6,16 @@ import ModesPanel from "./components/ModesPanel/ModesPanel";
 import Timer from "./components/Timer/Timer";
 import ModalWindow from "./components/ModalWindow/ModalWindow";
 import SettingsForm from "./components/SettingsForm/SettingsForm";
+import { IGeneralSettings } from "./types/types";
 
 function App() {
-  const [generalSettings, setGeneralSettings] = useState({
+  const [generalSettings, setGeneralSettings] = useState<IGeneralSettings>({
     time: {
       pomodoro: 25,
       shortBreak: 5,
       longBreak: 15,
     },
-    font: "kumbhSans",
+    font: "font-kumbhSans",
     color: "first-theme-primary-color",
     // currentMode: "pomodoro",
   });
@@ -88,7 +89,7 @@ function App() {
     100;
 
   return (
-    <div className="container h-full py-12 flex flex-col font-kumbhSans overflow-scroll">
+    <div className={`container h-full py-12 flex flex-col overflow-scroll`}>
       <h1 className="title text-3xl mb-12 font-bold">pomodoro</h1>
 
       <ModesPanel
@@ -123,6 +124,9 @@ function App() {
           onClose={() => {
             setSettingsOpen(false);
           }}
+          // handleFormSubmit={(values) => {
+          //   console.log("hi from the button click");
+          // }}
         >
           <SettingsForm generalSettings={generalSettings} />
         </ModalWindow>

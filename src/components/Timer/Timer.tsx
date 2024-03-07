@@ -25,18 +25,17 @@ const Timer: React.FC<TimerProps> = ({
           className="w-full h-full timer-circle"
           classNames={{
             svg: "w-full h-full drop-shadow-md",
-            indicator: "stroke-[#F87070] stroke-1",
+            indicator: "stroke-color-primary stroke-1",
             track: "stroke-white/10 stroke-1",
             value: "text-7xl font-semibold text-white",
           }}
           value={progress}
           strokeWidth={4}
           showValueLabel={true}
-          // label="25:00"
           aria-label="aowefijo"
           valueLabel={
             <div
-              aria-label="aowejfoiaw"
+              aria-label="timer progress"
               style={{ display: "flex", flexDirection: "column" }}
             >
               <span>
@@ -55,12 +54,8 @@ const Timer: React.FC<TimerProps> = ({
               </button>
             </div>
           }
-          // disableAnimation
         />
       </div>
-      {/* <h2>25:00</h2>
-    <button>Start</button>
-    <button>Stop</button> */}
     </div>
   );
 };

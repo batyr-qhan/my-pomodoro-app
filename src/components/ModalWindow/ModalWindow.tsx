@@ -15,27 +15,19 @@ const ModalWindow: React.FC<ModalWindowProps> = ({
   title,
 }) => {
   const handleButtonClick = () => {
-    // onClose();
-    const form = document.getElementById("settings-form");
+    const form = document.getElementById("settings-form") as HTMLFormElement;
 
     if (!form) {
       return;
     }
 
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      console.log("submit");
-    });
-
-    // const formData = new FormData(form);
-    // console.log(formData);
-    // const newMode = formData.get("mode") as Mode;
+    form.dispatchEvent(new Event("submit"));
   };
   return (
     <div className="fixed inset-0 flex items-center justify-center">
       <div className="fixed inset-0 bg-black-color opacity-50"></div>
-      <div className="relative bg-white-color rounded-2xl shadow-lg z-0 text-secondary-dark-color font-bold">
-        <header className="flex justify-between items-center border-b border-b-light-gray-color p-8">
+      <div className="relative bg-color-white rounded-2xl shadow-lg z-0 text-color-dark-secondary font-bold">
+        <header className="flex justify-between items-center border-b border-b-color-light-gray p-8">
           <h2 className="text-3xl">{title}</h2>
           <button onClick={onClose}>
             <img src={closeIcon} />
@@ -44,7 +36,8 @@ const ModalWindow: React.FC<ModalWindowProps> = ({
         {children}
         <button
           onClick={handleButtonClick}
-          className="absolute -bottom-8 left-2/4 transform -translate-x-2/4 bg-first-theme-primary-color px-16 rounded-full h-16 text-white-color hover:bg-[#fa9a9a] transition-all duration-300 ease-in-out"
+          className="absolute -bottom-8 left-2/4 transform -translate-x-2/4 bg-color-primary px-16 rounded-full h-16 text-color-white hover:bg-[#fa9a9a] transition-all duration-300 ease-in-out"
+          type="submit"
         >
           Apply
         </button>
