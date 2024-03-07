@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Input } from "@nextui-org/react";
 
@@ -7,10 +7,11 @@ import { IGeneralSettings } from "../../types/types";
 
 interface Props {
   generalSettings: IGeneralSettings;
+  setGeneralSettings: React.Dispatch<React.SetStateAction<IGeneralSettings>>;
 }
 
 const SettingsForm: React.FC<Props> = ({ generalSettings }) => {
-  const [formState, setFormState] = React.useState({
+  const [formState, setFormState] = useState({
     pomodoro: generalSettings.time.pomodoro,
     shortBreak: generalSettings.time.shortBreak,
     longBreak: generalSettings.time.longBreak,
@@ -25,41 +26,83 @@ const SettingsForm: React.FC<Props> = ({ generalSettings }) => {
     });
   };
 
+  const [formErrors, setFormErrors] = useState({
+    pomodoro: "",
+    shortBreak: "",
+    longBreak: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log("awklejfwej");
+    e.preventDefault();
+
+    // Perform form validation
+    const errors = {
+      pomodoro: "",
+      shortBreak: "",
+      longBreak: "",
+    };
+
+    console.log("wieofjweifowej");
+
+    if (formState.pomodoro < 1 || formState.pomodoro > 60) {
+      errors.pomodoro = "Pomodoro time should be between 1 and 60 minutes";
+    }
+
+    if (formState.shortBreak < 1 || formState.shortBreak > 15) {
+      errors.shortBreak = "Short break time should be between 1 and 15 minutes";
+    }
+
+    if (formState.longBreak < 1 || formState.longBreak > 60) {
+      errors.longBreak = "Long break time should be between 1 and 60 minutes";
+    }
+
+    // Update form errors state
+    setFormErrors(errors);
+
+    // If there are no errors, proceed with form submission
+    if (Object.values(errors).every((error) => error === "")) {
+      console.log("Form submitted successfully");
+
+      alert("no errors");
+      // Perform further actions here
+    }
+  };
+
   return (
     <form
       id="settings-form"
-      onSubmit={(e) => {
+      onSubmitCapture={(e) => {
         e.preventDefault();
-        console.log("submit console log");
+        console.log("this is fawefawefaworm", e.target);
 
-        // const formData = new FormData(form);
-        // formData.forEach((value, key) => {
-        //   console.log(key, value);
-        // });
-        // const values = Object.fromEntries(formData);
-
-        // console.log("values", values);
-        // onsole.log();
+        handleSubmit(e);
       }}
+      // onSubmit={(e) => {
+      //   e.preventDefault();
+      //   console.log("this is form", e.target);
+      // }}
     >
       <section className="px-8 pt-8 pb-12 border-b border-b-color-light-gray">
         <div>
-          <h2 className="text-left tracking-[.25em] text-xl font-semibold mb-4">
+          <h2 className="text-left tracking-[.25em] font-bold mb-6 uppercase">
             Time (Minutes)
           </h2>
-          <div className="flex gap-4">
+          <div className="flex gap-4 input-fields">
             <Input
               label="pomodoro"
               labelPlacement="outside"
               name="pomodoro"
               type="number"
               classNames={{
-                input: "bg-color-transparent",
+                input: "bg-color-default-gray font-bold",
+                inputWrapper: "bg-color-default-gray",
               }}
               value={formState.pomodoro.toString()}
               onChange={(e) => handleInputChange("pomodoro", e.target.value)}
               min={1}
               max={60}
+              isInvalid={formErrors.pomodoro !== ""}
             />
 
             <Input
@@ -68,10 +111,14 @@ const SettingsForm: React.FC<Props> = ({ generalSettings }) => {
               name="shortBreak"
               type="number"
               classNames={{
-                input: "bg-color-transparent",
+                input: "bg-color-default-gray font-bold",
+                inputWrapper: "bg-color-default-gray",
               }}
               value={formState.shortBreak.toString()}
               onChange={(e) => handleInputChange("shortBreak", e.target.value)}
+              isInvalid={formErrors.shortBreak !== ""}
+              min={1}
+              max={15}
             />
 
             <Input
@@ -80,10 +127,14 @@ const SettingsForm: React.FC<Props> = ({ generalSettings }) => {
               name="longBreak"
               type="number"
               classNames={{
-                input: "bg-color-transparent",
+                input: "bg-color-default-gray font-bold",
+                inputWrapper: "bg-color-default-gray",
               }}
               value={formState.longBreak.toString()}
               onChange={(e) => handleInputChange("longBreak", e.target.value)}
+              isInvalid={formErrors.longBreak !== ""}
+              min={1}
+              max={60}
             />
           </div>
         </div>

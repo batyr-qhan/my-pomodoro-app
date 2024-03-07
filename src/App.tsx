@@ -128,7 +128,10 @@ function App() {
           //   console.log("hi from the button click");
           // }}
         >
-          <SettingsForm generalSettings={generalSettings} />
+          <SettingsForm
+            generalSettings={generalSettings}
+            setGeneralSettings={setGeneralSettings}
+          />
         </ModalWindow>
       )}
     </div>

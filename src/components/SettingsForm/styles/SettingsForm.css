@@ -30,12 +30,9 @@ input[type="number"] {
   display: none;
 }
 
-/* .fonts-section li label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  cursor: pointer;
-} */
+.input-fields {
+  label {
+    color: var(--color-dark-primary)!important;
+    opacity: 0.25;
+  }
+}
