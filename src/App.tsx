@@ -1,21 +1,46 @@
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
 import { useEffect, useState } from "react";
 import "./App.css";
-import { Input } from "@nextui-org/react";
 
 import settingIcon from "./assets/settingsIcon.svg";
-import closeIcon from "./assets/closeIcon.svg";
 import ModesPanel from "./components/ModesPanel/ModesPanel";
 import Timer from "./components/Timer/Timer";
 import ModalWindow from "./components/ModalWindow/ModalWindow";
+import SettingsForm from "./components/SettingsForm/SettingsForm";
 
 function App() {
+  const [generalSettings, setGeneralSettings] = useState({
+    time: {
+      pomodoro: 25,
+      shortBreak: 5,
+      longBreak: 15,
+    },
+    font: "kumbhSans",
+    color: "first-theme-primary-color",
+    // currentMode: "pomodoro",
+  });
+
+  const getModeDuration = (
+    mode: "pomodoro" | "shortBreak" | "longBreak"
+  ): number => {
+    return generalSettings.time[mode];
+  };
+
+  useEffect(() => {
+    const storedSettings = localStorage.getItem("generalSettings");
+    if (storedSettings) {
+      setGeneralSettings(JSON.parse(storedSettings));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("generalSettings", JSON.stringify(generalSettings));
+  }, [generalSettings]);
+
   const [currentMode, setCurrentMode] = useState<
     "pomodoro" | "shortBreak" | "longBreak"
   >("pomodoro");
 
-  const [minutes, setMinutes] = useState(25);
+  const [minutes, setMinutes] = useState(generalSettings.time[currentMode]);
   const [seconds, setSeconds] = useState(0);
 
   const [isRunning, setIsRunning] = useState(false);
@@ -51,28 +76,11 @@ function App() {
     setIsRunning(false);
   };
 
-  const resetTimer = () => {
-    // setMinutes(25);
-
-    setMinutes(getModeDuration(currentMode));
-    setSeconds(0);
-    setIsRunning(false);
-  };
-
-  const getModeDuration = (
-    mode: "pomodoro" | "shortBreak" | "longBreak"
-  ): number => {
-    switch (mode) {
-      case "pomodoro":
-        return 25;
-      case "shortBreak":
-        return 5;
-      case "longBreak":
-        return 15;
-      default:
-        return 25;
-    }
-  };
+  // const resetTimer = () => {
+  //   setMinutes(getModeDuration(currentMode));
+  //   setSeconds(0);
+  //   setIsRunning(false);
+  // };
 
   const progress =
     ((getModeDuration(currentMode) * 60 - (minutes * 60 + seconds)) /
@@ -110,56 +118,13 @@ function App() {
 
       {settingsOpen && (
         <ModalWindow
+          title="Settings"
           isOpen={settingsOpen}
           onClose={() => {
             setSettingsOpen(false);
           }}
         >
-          <header className="flex justify-between items-center border-b border-b-light-gray-color p-8">
-            <h2 className="text-3xl">Settings</h2>
-            <button
-              onClick={() => {
-                setSettingsOpen(false);
-              }}
-            >
-              <img src={closeIcon} />
-            </button>
-          </header>
-          <section className="px-8 pt-8 pb-12 border-b border-b-light-gray-color">
-            <div>
-              <h2 className="text-left tracking-[.25em] text-xl font-semibold mb-4">
-                Time (Minutes)
-              </h2>
-              <div className="flex gap-4">
-                <Input
-                  type="number"
-                  classNames={{
-                    input: "bg-transparent-color",
-                  }}
-                />
-
-                <Input type="number" />
-
-                <Input type="number" />
-              </div>
-            </div>
-          </section>
-          <section className="flex justify-between p-8 items-center border-b border-b-light-gray-color">
-            <h2 className="tracking-[.5em] uppercase">Font</h2>
-            <ul className="fonts-section">
-              <li className="active">Aa</li>
-              <li>Aa</li>
-              <li>Aa</li>
-            </ul>
-          </section>
-          <section className="flex justify-between p-8 pb-16 items-center">
-            <h2 className="tracking-[.5em] uppercase">Color</h2>
-            <ul className="colors-section">
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </section>
+          <SettingsForm generalSettings={generalSettings} />
         </ModalWindow>
       )}
     </div>
