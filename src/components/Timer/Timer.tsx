@@ -1,6 +1,7 @@
 import { CircularProgress } from "@nextui-org/react";
 import React from "react";
 
+import "./styles/Timer.css";
 interface TimerProps {
   progress: number;
   minutes: number;
@@ -27,18 +28,15 @@ const Timer: React.FC<TimerProps> = ({
             svg: "w-full h-full drop-shadow-md",
             indicator: "stroke-color-primary stroke-1",
             track: "stroke-white/10 stroke-1",
-            value: "text-7xl font-semibold text-white",
+            value: "text-7xl text-white",
           }}
           value={progress}
           strokeWidth={4}
           showValueLabel={true}
           aria-label="aowefijo"
           valueLabel={
-            <div
-              aria-label="timer progress"
-              style={{ display: "flex", flexDirection: "column" }}
-            >
-              <span>
+            <div aria-label="timer progress" className="flex flex-col">
+              <span className="time-indicator">
                 {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
               </span>
               <button

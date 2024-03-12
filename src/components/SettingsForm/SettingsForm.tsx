@@ -3,20 +3,32 @@ import React, { useState } from "react";
 import { Input } from "@nextui-org/react";
 
 import "./styles/SettingsForm.css";
-import { IGeneralSettings } from "../../types/types";
+import { IGeneralSettings, TFont } from "../../types/types";
 
 interface Props {
   generalSettings: IGeneralSettings;
   setGeneralSettings: React.Dispatch<React.SetStateAction<IGeneralSettings>>;
+  handleClose: () => void;
 }
 
-const SettingsForm: React.FC<Props> = ({ generalSettings }) => {
+const SettingsForm: React.FC<Props> = ({
+  generalSettings,
+  setGeneralSettings,
+  handleClose,
+}) => {
   const [formState, setFormState] = useState({
     pomodoro: generalSettings.time.pomodoro,
     shortBreak: generalSettings.time.shortBreak,
     longBreak: generalSettings.time.longBreak,
     font: generalSettings.font,
-    color: generalSettings.color,
+    theme: generalSettings.theme,
+    // color: generalSettings.color,
+  });
+
+  const [formErrors, setFormErrors] = useState({
+    pomodoro: "",
+    shortBreak: "",
+    longBreak: "",
   });
 
   const handleInputChange = (name: string, value: string) => {
@@ -25,12 +37,6 @@ const SettingsForm: React.FC<Props> = ({ generalSettings }) => {
       [name]: parseInt(value),
     });
   };
-
-  const [formErrors, setFormErrors] = useState({
-    pomodoro: "",
-    shortBreak: "",
-    longBreak: "",
-  });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     console.log("awklejfwej");
@@ -42,8 +48,6 @@ const SettingsForm: React.FC<Props> = ({ generalSettings }) => {
       shortBreak: "",
       longBreak: "",
     };
-
-    console.log("wieofjweifowej");
 
     if (formState.pomodoro < 1 || formState.pomodoro > 60) {
       errors.pomodoro = "Pomodoro time should be between 1 and 60 minutes";
@@ -65,7 +69,19 @@ const SettingsForm: React.FC<Props> = ({ generalSettings }) => {
       console.log("Form submitted successfully");
 
       alert("no errors");
-      // Perform further actions here
+
+      setGeneralSettings({
+        ...generalSettings,
+        time: {
+          pomodoro: formState.pomodoro,
+          shortBreak: formState.shortBreak,
+          longBreak: formState.longBreak,
+        },
+        font: formState.font,
+        theme: formState.theme,
+      });
+
+      handleClose();
     }
   };
 
@@ -74,14 +90,9 @@ const SettingsForm: React.FC<Props> = ({ generalSettings }) => {
       id="settings-form"
       onSubmitCapture={(e) => {
         e.preventDefault();
-        console.log("this is fawefawefaworm", e.target);
 
         handleSubmit(e);
       }}
-      // onSubmit={(e) => {
-      //   e.preventDefault();
-      //   console.log("this is form", e.target);
-      // }}
     >
       <section className="px-8 pt-8 pb-12 border-b border-b-color-light-gray">
         <div>
@@ -103,6 +114,7 @@ const SettingsForm: React.FC<Props> = ({ generalSettings }) => {
               min={1}
               max={60}
               isInvalid={formErrors.pomodoro !== ""}
+              errorMessage={formErrors.pomodoro}
             />
 
             <Input
@@ -117,6 +129,7 @@ const SettingsForm: React.FC<Props> = ({ generalSettings }) => {
               value={formState.shortBreak.toString()}
               onChange={(e) => handleInputChange("shortBreak", e.target.value)}
               isInvalid={formErrors.shortBreak !== ""}
+              errorMessage={formErrors.shortBreak}
               min={1}
               max={15}
             />
@@ -133,6 +146,7 @@ const SettingsForm: React.FC<Props> = ({ generalSettings }) => {
               value={formState.longBreak.toString()}
               onChange={(e) => handleInputChange("longBreak", e.target.value)}
               isInvalid={formErrors.longBreak !== ""}
+              errorMessage={formErrors.longBreak}
               min={1}
               max={60}
             />
@@ -143,38 +157,49 @@ const SettingsForm: React.FC<Props> = ({ generalSettings }) => {
         <h2 className="tracking-[.5em] uppercase">Font</h2>
 
         <ul className="fonts-section">
-          {["font-kumbhSans", "font-robotoSlab", "font-spaceMono"].map(
-            (font) => (
-              <li
-                key={font}
-                className={formState.font === font ? "active" : ""}
-                onClick={() => {
-                  setFormState({
-                    ...formState,
-                    font: font,
-                  });
-                }}
-              >
-                Aa
-              </li>
-            )
-          )}
+          {[
+            "Kumbh Sans, sans-serif",
+            "Roboto Slab, serif",
+            "Space Mono, monospace",
+          ].map((font) => (
+            <li
+              key={font}
+              className={`${
+                formState.font === font ? "active" : ""
+              } fonts-section__font`}
+              onClick={() => {
+                setFormState({
+                  ...formState,
+                  font: font as TFont,
+                });
+              }}
+            >
+              Aa
+            </li>
+          ))}
         </ul>
       </section>
       <section className="flex justify-between p-8 pb-16 items-center">
         <h2 className="tracking-[.5em] uppercase">Color</h2>
         <ul className="colors-section">
-          {}
-          <li></li>
-          <li></li>
-          <li
-            onClick={() => {
-              console.log("clicked");
-              document
-                .querySelector("html")
-                ?.setAttribute("data-theme", "theme2");
-            }}
-          ></li>
+          {["initialTheme", "theme2", "theme3"].map((theme) => (
+            <li
+              key={theme}
+              className={`colors-section__circle ${
+                formState.theme === theme ? "selected" : ""
+              }`}
+              onClick={() => {
+                setFormState({
+                  ...formState,
+                  theme: theme as "initialTheme" | "theme2" | "theme3",
+                });
+              }}
+            >
+              {formState.theme === theme && (
+                <div className="colors-section__check-mark"></div>
+              )}
+            </li>
+          ))}
         </ul>
       </section>
     </form>

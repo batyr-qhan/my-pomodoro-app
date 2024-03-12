@@ -11,7 +11,7 @@
 
 /* Fonts */
 
-.fontThemePrimary {
+/* .fontThemePrimary {
   font-family: "Kumbh Sans", sans-serif;
   color: #fff;
 }
@@ -24,64 +24,4 @@
 .fontThemeThird {
   font-family: "Space Mono", sans-serif;
   color: #646cff;
-}
-
-/* Timer */
-
-.timer-container {
-  width: 410px;
-  height: 410px;
-  background-image: linear-gradient(135deg, #0e112a, #2e325a);
-  border-radius: 50%;
-  padding: 22px;
-}
-
-.timer-container__timer {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  display: flex;
-  place-items: center;
-  /* justify-content: center;
-  align-items: center; */
-  /* flex-direction: column; */
-  background-color: #161932;
-  /* border: 1px solid #252849; */
-  /* border-radius: 50%; */
-  position: relative;
-}
-
-.timer-circle > div {
-  width: 100%;
-  height: 100%;
-}
-
-/* Colors Section */
-
-.colors-section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-
-  /* margin-top: 20px; */
-}
-
-.colors-section li {
-  cursor: pointer;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-}
-
-.colors-section li:first-child {
-  background-color: #ff3e97;
-}
-
-.colors-section li:nth-child(2) {
-  background-color: #ff8b3d;
-}
-
-.colors-section li:nth-child(3) {
-  background-color: #7ed56f;
-}
+} */

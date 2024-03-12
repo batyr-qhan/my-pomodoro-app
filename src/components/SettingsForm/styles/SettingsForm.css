@@ -2,13 +2,15 @@ input[type="number"] {
   width: 124px; /* Specify a fixed width */
 }
 
+/* Fonts Section */
+
 .fonts-section {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.fonts-section li {
+.fonts-section__font {
   list-style: none;
   cursor: pointer;
   border-radius: 50%;
@@ -19,6 +21,11 @@ input[type="number"] {
   justify-content: center;
   align-items: center;
   background-color: #eff1fa;
+  transition: transform 0.3s;
+}
+
+.fonts-section__font:hover {
+  transform: scale(1.1);
 }
 
 .fonts-section li.active {
@@ -32,7 +39,69 @@ input[type="number"] {
 
 .input-fields {
   label {
-    color: var(--color-dark-primary)!important;
+    color: var(--color-dark-primary) !important;
     opacity: 0.25;
   }
+}
+
+/* Colors Section */
+
+.colors-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.colors-section__circle {
+  cursor: pointer;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.colors-section__circle:hover {
+  transform: scale(1.1);
+}
+
+.colors-section__check-mark {
+  position: absolute;
+  transform: rotate(45deg) translate(-50%, -50%);
+  left: 32%;
+  top: 48%;
+  height: 24px;
+  width: 12px;
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+}
+
+.selected .colors-section__check-mark {
+  display: block;
+}
+
+@keyframes checkMarkDraw {
+  from {
+    width: 0;
+    height: 0;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  to {
+    width: 60%;
+    height: 20%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+.colors-section li:first-child {
+  background-color: var(--initial-primary-color);
+}
+
+.colors-section li:nth-child(2) {
+  background-color: var(--theme2-primary-color);
+}
+
+.colors-section li:nth-child(3) {
+  background-color: var(--theme3-primary-color);
 }

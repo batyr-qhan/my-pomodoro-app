@@ -21,10 +21,18 @@
     --font-family-primary: "Roboto Slab", serif;
   }
 
+  /* [data-theme="theme2"] .time-indicator {
+    color: red !important;
+  } */
+
   [data-theme="theme3"] {
     --color-primary: #d881f8;
     --font-family-primary: "Space Mono", monospace;
   }
+
+  /* [data-theme="theme3"] .time-indicator {
+    color: green !important;
+  } */
 }
 
 :root {
@@ -38,6 +46,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --initial-primary-color: #f87070;
+  --theme2-primary-color: #70f3f8;
+  --theme3-primary-color: #d881f8;
 }
 
 body {

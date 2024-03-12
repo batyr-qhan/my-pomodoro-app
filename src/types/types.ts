@@ -5,7 +5,15 @@ export interface IGeneralSettings {
     longBreak: number;
   };
   font: TFont;
-  color: string;
+  // color: string;
+  theme: TTheme;
 }
 
-export type TFont = "font-kumbhSans" | "font-robotoSlab" | "font-spaceMono" | string;
+export type TFont =
+  | "Kumbh Sans, sans-serif"
+  | "Roboto Slab, serif"
+  | "Space Mono, monospace";
+
+export type TTheme = "initialTheme" | "theme2" | "theme3";
+
+export type TMode = "pomodoro" | "shortBreak" | "longBreak";

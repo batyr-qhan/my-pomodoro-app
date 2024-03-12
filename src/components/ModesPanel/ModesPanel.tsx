@@ -1,4 +1,5 @@
 import React from "react";
+import { TMode } from "../../types/types";
 
 interface MyComponentProps {
   currentMode: "pomodoro" | "shortBreak" | "longBreak";
@@ -7,6 +8,7 @@ interface MyComponentProps {
   >;
   setMinutes: React.Dispatch<React.SetStateAction<number>>;
   setSeconds: React.Dispatch<React.SetStateAction<number>>;
+  getCurrentModeDuration: (mode: TMode) => number;
 }
 
 const ModesPanel: React.FC<MyComponentProps> = ({
@@ -14,10 +16,11 @@ const ModesPanel: React.FC<MyComponentProps> = ({
   setCurrentMode,
   setMinutes,
   setSeconds,
+  getCurrentModeDuration,
 }) => {
   return (
     <nav className="mb-12 font-bold text-[#1E213F]">
-      <ul className="flex justify-around rounded-full bg-color-dark-secondary p-2">
+      <ul className="flex justify-around rounded-full bg-color-dark-secondary p-2 text-nowrap">
         <li
           className={`flex-1 p-4 cursor-pointer ${
             currentMode === "pomodoro" && "bg-color-primary"
@@ -27,11 +30,10 @@ const ModesPanel: React.FC<MyComponentProps> = ({
             href="#"
             onClick={() => {
               setCurrentMode("pomodoro");
-              setMinutes(25);
+              setMinutes(getCurrentModeDuration("pomodoro"));
               setSeconds(0);
-              // setIsRunning(false);
-
-              // setCurrentFontFamily("font-kumbhSans");
+              // setMinutes(25);
+              // setSeconds(0);
             }}
           >
             pomodoro
@@ -46,10 +48,8 @@ const ModesPanel: React.FC<MyComponentProps> = ({
             href="#"
             onClick={() => {
               setCurrentMode("shortBreak");
-              setMinutes(5);
+              setMinutes(getCurrentModeDuration("shortBreak"));
               setSeconds(0);
-
-              // setCurrentFontFamily("font-robotoSlab");
             }}
           >
             short break
@@ -64,9 +64,9 @@ const ModesPanel: React.FC<MyComponentProps> = ({
             href="#"
             onClick={() => {
               setCurrentMode("longBreak");
-              setMinutes(15);
+              setMinutes(getCurrentModeDuration("longBreak"));
+              // setMinutes(15);
               setSeconds(0);
-              // setCurrentFontFamily("font-robotoSlab");
             }}
           >
             long break

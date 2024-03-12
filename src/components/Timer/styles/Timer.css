@@ -1,0 +1,41 @@
+/* Timer */
+
+.timer-container {
+  width: 410px;
+  height: 410px;
+  background-image: linear-gradient(135deg, #0e112a, #2e325a);
+  border-radius: 50%;
+  padding: 22px;
+  position: relative;
+}
+
+.timer-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); /* Light shadow color */
+}
+
+.timer-container__timer {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  place-items: center;
+  /* justify-content: center;
+    align-items: center; */
+  /* flex-direction: column; */
+  background-color: #161932;
+  /* border: 1px solid #252849; */
+  /* border-radius: 50%; */
+  position: relative;
+}
+
+.timer-circle > div {
+  width: 100%;
+  height: 100%;
+}
