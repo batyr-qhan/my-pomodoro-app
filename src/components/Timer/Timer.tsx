@@ -44,7 +44,7 @@ const Timer: React.FC<TimerProps> = ({
                   {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
                 </span>
                 <button
-                  className="absolute -bottom-12 left-0 right-0 text-color rounded-full uppercase text-lg tracking-[.5em] hover:text-color-primary transition-colors active:scale-95"
+                  className="absolute -bottom-12 left-0 right-0 text-color rounded-full uppercase text-lg tracking-[1em] indent-[1em] hover:text-color-primary transition-colors active:scale-95"
                   onClick={() => {
                     if (isRunning) {
                       pauseTimer();

@@ -15,7 +15,19 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  box-shadow: -48px -48px 80px 0 #272c5a, 48px 48px 80px 0 #121530;
+  /* TODO: this is initial shadows, light and dark, can later set up a switch button */
+  /* box-shadow: -48px -48px 80px 0 #272c5a, 48px 48px 80px 0 #121530; */
+  box-shadow: 48px 48px 80px 0 var(--color-primary); /* Initial box shadow */
+  animation: bounceShadow 4s infinite alternate; /* Apply animation */
+}
+
+@keyframes bounceShadow {
+  0% {
+    box-shadow: 0 0 0 0 var(--color-primary); /* Initial shadow */
+  }
+  100% {
+    box-shadow: 0 0 64px 24px var(--color-primary); /* Bouncing shadow */
+  }
 }
 
 .timer-container__timer {

@@ -22,7 +22,6 @@ const SettingsForm: React.FC<Props> = ({
     longBreak: generalSettings.time.longBreak,
     font: generalSettings.font,
     theme: generalSettings.theme,
-    // color: generalSettings.color,
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -66,10 +65,6 @@ const SettingsForm: React.FC<Props> = ({
 
     // If there are no errors, proceed with form submission
     if (Object.values(errors).every((error) => error === "")) {
-      console.log("Form submitted successfully");
-
-      alert("no errors");
-
       setGeneralSettings({
         ...generalSettings,
         time: {
