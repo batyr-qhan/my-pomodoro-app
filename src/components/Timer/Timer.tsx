@@ -35,21 +35,27 @@ const Timer: React.FC<TimerProps> = ({
           showValueLabel={true}
           aria-label="aowefijo"
           valueLabel={
-            <div aria-label="timer progress" className="flex flex-col">
-              <span className="time-indicator">
-                {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
-              </span>
-              <button
-                onClick={() => {
-                  if (isRunning) {
-                    pauseTimer();
-                  } else {
-                    startTimer();
-                  }
-                }}
-              >
-                Start
-              </button>
+            <div
+              aria-label="timer progress"
+              className="flex justify-center items-center w-full h-full"
+            >
+              <div className="relative">
+                <span>
+                  {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+                </span>
+                <button
+                  className="absolute -bottom-12 left-0 right-0 text-color rounded-full uppercase text-lg tracking-[.5em] hover:text-color-primary transition-colors active:scale-95"
+                  onClick={() => {
+                    if (isRunning) {
+                      pauseTimer();
+                    } else {
+                      startTimer();
+                    }
+                  }}
+                >
+                  {isRunning ? "pause" : "start"}
+                </button>
+              </div>
             </div>
           }
         />

@@ -24,9 +24,9 @@ const ModalWindow: React.FC<ModalWindowProps> = ({
     form.dispatchEvent(new Event("submit"));
   };
   return (
-    <div className="fixed inset-0 flex items-center justify-center overflow-y-scroll">
+    <div className="fixed inset-0 flex items-center justify-center overflow-y-scroll z-20">
       <div className="fixed inset-0 bg-color-black opacity-50"></div>
-      <div className="relative bg-color-white rounded-2xl shadow-lg z-0 text-color-dark-secondary font-bold">
+      <div className="relative bg-color-white rounded-2xl shadow-lg text-color-dark-secondary font-bold">
         <header className="flex justify-between items-center border-b border-b-color-light-gray p-8">
           <h2 className="text-3xl">{title}</h2>
           <button className="hover:scale-125 transition " onClick={onClose}>

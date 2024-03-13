@@ -63,29 +63,6 @@ function App() {
   //   setGeneralSettings(updatedSettings);
   // };
 
-  // const [generalSettings, setGeneralSettings] = useState<IGeneralSettings>({
-  //   time: {
-  //     pomodoro: 25,
-  //     shortBreak: 5,
-  //     longBreak: 15,
-  //   },
-  //   font: "font-kumbhSans",
-  //   theme: "initial-theme",
-  //   color: "first-theme-primary-color",
-  //   // currentMode: "pomodoro",
-  // });
-
-  // useEffect(() => {
-  //   const storedSettings = localStorage.getItem("generalSettings");
-  //   if (storedSettings) {
-  //     setGeneralSettings(JSON.parse(storedSettings));
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem("generalSettings", JSON.stringify(generalSettings));
-  // }, [generalSettings]);
-
   useEffect(() => {
     let interval: number;
 
@@ -127,7 +104,7 @@ function App() {
     100;
 
   return (
-    <div className={`container h-full p-12 flex flex-col overflow-scroll`}>
+    <div className={`container h-full py-12 px-36 flex flex-col overflow-scroll`}>
       <h1 className="title text-3xl mb-12 font-bold">pomodoro</h1>
 
       <ModesPanel
@@ -148,7 +125,7 @@ function App() {
       />
 
       <div
-        className="self-center cursor-pointer"
+        className="self-center cursor-pointer z-10"
         onClick={() => {
           setSettingsOpen(true);
         }}

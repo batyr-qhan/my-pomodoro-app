@@ -19,7 +19,7 @@ const ModesPanel: React.FC<MyComponentProps> = ({
   getCurrentModeDuration,
 }) => {
   return (
-    <nav className="mb-12 font-bold text-[#1E213F]">
+    <nav className="mb-12 font-bold text-[#1E213F] z-10">
       <ul className="flex justify-around rounded-full bg-color-dark-secondary p-2 text-nowrap">
         <li
           className={`flex-1 p-4 cursor-pointer ${
@@ -32,8 +32,6 @@ const ModesPanel: React.FC<MyComponentProps> = ({
               setCurrentMode("pomodoro");
               setMinutes(getCurrentModeDuration("pomodoro"));
               setSeconds(0);
-              // setMinutes(25);
-              // setSeconds(0);
             }}
           >
             pomodoro
