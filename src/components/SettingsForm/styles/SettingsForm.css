@@ -37,11 +37,9 @@ input[type="number"] {
   display: none;
 }
 
-.input-fields {
-  label {
-    color: var(--color-dark-primary) !important;
-    opacity: 0.25;
-  }
+.input-fields label {
+  color: var(--color-dark-primary) !important;
+  opacity: 0.25;
 }
 
 /* Colors Section */
