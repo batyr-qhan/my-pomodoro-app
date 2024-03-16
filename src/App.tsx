@@ -19,6 +19,13 @@ const initialSettings: IGeneralSettings = {
   theme: "initialTheme",
 };
 
+// TODO: 1. Make animation optional in the settings modal checkbox or something
+// TODO: 2. Add sound when the timer ends
+// TODO: 3. Add a notification when the timer ends
+// TODO: 4. Try to attach some LoFi music to the timer
+// TODO: 5. Add a button to reset the timer
+// TODO: 6.
+
 function App() {
   const [generalSettings, setGeneralSettings] = useLocalStorage(
     "generalSettings",
@@ -104,7 +111,7 @@ function App() {
     100;
 
   return (
-    <div className={`container h-full py-12 px-36 flex flex-col overflow-scroll`}>
+    <div className={`container h-full flex flex-col overflow-visible`}>
       <h1 className="title text-3xl mb-12 font-bold">pomodoro</h1>
 
       <ModesPanel
