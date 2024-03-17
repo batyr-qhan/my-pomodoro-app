@@ -111,8 +111,8 @@ function App() {
     100;
 
   return (
-    <div className={`container h-full flex flex-col overflow-visible`}>
-      <h1 className="title text-3xl mb-12 font-bold">pomodoro</h1>
+    <div className="container mx-auto h-full flex flex-col items-center overflow-visible justify-evenly box-border text-base max-[768px]:text-sm">
+      <h1 className="title text-3xl max-[768px]:text-2xl font-bold text-center">pomodoro</h1>
 
       <ModesPanel
         currentMode={currentMode}

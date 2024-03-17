@@ -21,18 +21,10 @@
     --font-family-primary: "Roboto Slab", serif;
   }
 
-  /* [data-theme="theme2"] .time-indicator {
-    color: red !important;
-  } */
-
   [data-theme="theme3"] {
     --color-primary: #d881f8;
     --font-family-primary: "Space Mono", monospace;
   }
-
-  /* [data-theme="theme3"] .time-indicator {
-    color: green !important;
-  } */
 }
 
 :root {
@@ -52,12 +44,14 @@
   --theme3-primary-color: #d881f8;
 }
 
+html,
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
+  overflow: scroll;
+}
+
+body {
+  height: 100vh;
   min-width: 320px;
-  min-height: 100vh;
   background-color: var(--color-dark);
   font-family: var(--font-family-primary);
 }

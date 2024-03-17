@@ -1,6 +1,8 @@
 import React from "react";
 import { TMode } from "../../types/types";
 
+import "./styles/modes-panel.css";
+
 interface MyComponentProps {
   currentMode: "pomodoro" | "shortBreak" | "longBreak";
   setCurrentMode: React.Dispatch<
@@ -19,10 +21,10 @@ const ModesPanel: React.FC<MyComponentProps> = ({
   getCurrentModeDuration,
 }) => {
   return (
-    <nav className="mb-12 font-bold text-[#1E213F] z-10">
+    <nav className="font-bold text-[#1E213F] z-10 max-[768px]:text-[12px]">
       <ul className="flex justify-around rounded-full bg-color-dark-secondary p-2 text-nowrap">
         <li
-          className={`flex-1 p-4 cursor-pointer ${
+          className={`flex-1 cursor-pointer ${
             currentMode === "pomodoro" && "bg-color-primary"
           }  rounded-full`}
         >

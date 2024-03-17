@@ -7,6 +7,19 @@
   position: relative;
 }
 
+@media (max-width: 767px) {
+  .timer-container {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    padding: 16px;
+  }
+
+  .timer-container::before {
+    box-shadow: 24px 24px 40px 0 var(--color-primary);
+  }
+}
+
 .timer-container::before {
   content: "";
   position: absolute;
@@ -36,12 +49,7 @@
   border-radius: 50%;
   display: flex;
   place-items: center;
-  /* justify-content: center;
-    align-items: center; */
-  /* flex-direction: column; */
   background-color: #161932;
-  /* border: 1px solid #252849; */
-  /* border-radius: 50%; */
   position: relative;
 }
 

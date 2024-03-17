@@ -1,27 +1,8 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  text-align: center;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 
 #root > div {
   height: 100%;
 }
-
-/* Fonts */
-
-/* .fontThemePrimary {
-  font-family: "Kumbh Sans", sans-serif;
-  color: #fff;
-}
-
-.fontThemeSecondary {
-  font-family: "Roboto Slab", sans-serif;
-  color: #d7e0ff;
-}
-
-.fontThemeThird {
-  font-family: "Space Mono", sans-serif;
-  color: #646cff;
-} */
