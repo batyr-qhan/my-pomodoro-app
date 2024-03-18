@@ -43,6 +43,15 @@
   --initial-primary-color: #f87070;
   --theme2-primary-color: #70f3f8;
   --theme3-primary-color: #d881f8;
+
+  --color-dark: #1e213f;
+  --color-dark-secondary: #161932;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-light-gray: #e3e1e1;
+  --color-default-gray: #eff1fa;
+  --color-transparent: transparent;
+  --color-navbar-inactive-text: #d7e0ff;
 }
 
 html,

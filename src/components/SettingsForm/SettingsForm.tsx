@@ -38,7 +38,6 @@ const SettingsForm: React.FC<Props> = ({
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log("awklejfwej");
     e.preventDefault();
 
     // Perform form validation

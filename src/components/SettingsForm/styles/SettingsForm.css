@@ -20,7 +20,7 @@ input[type="number"] {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #eff1fa;
+  background-color: var(--color-default-gray);
   transition: transform 0.3s;
 }
 
@@ -28,8 +28,30 @@ input[type="number"] {
   transform: scale(1.1);
 }
 
-.fonts-section li.active {
-  background-color: #1e213f;
+.fonts-section__font:hover::before {
+  content: "";
+  position: absolute;
+  border: 1px solid var(--color-default-gray);
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  opacity: transparent;
+}
+
+.fonts-section__font.active:hover::before {
+  content: none;
+}
+
+.fonts-section__font.active:active {
+  transform: scale(0.9) !important; /* Add scaling animation when pressed */
+}
+
+.fonts-section__font.active:hover {
+  transform: scale(1);
+}
+
+.fonts-section__font.active {
+  background-color: var(--color-dark);
   color: #fff;
 }
 
@@ -58,6 +80,9 @@ input[type="number"] {
   height: 48px;
   position: relative;
   transition: transform 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .colors-section__circle:hover {
@@ -92,14 +117,42 @@ input[type="number"] {
   }
 }
 
-.colors-section li:first-child {
+.colors-section__circle:nth-child(1) {
+  color: var(--initial-primary-color);
   background-color: var(--initial-primary-color);
 }
 
-.colors-section li:nth-child(2) {
+.colors-section__circle:nth-child(2) {
+  color: var(--theme2-primary-color);
   background-color: var(--theme2-primary-color);
 }
 
-.colors-section li:nth-child(3) {
+.colors-section__circle:nth-child(3) {
+  color: var(--theme3-primary-color);
   background-color: var(--theme3-primary-color);
+}
+
+.colors-section__circle:hover::before {
+  content: "";
+  position: absolute;
+  top: -10%; /* Adjust positioning to center the border */
+  left: -10%; /* Adjust positioning to center the border */
+  border: 1px solid currentColor; /* Use currentColor to match the circle's background */
+  width: 120%; /* Increase size to cover the circle */
+  height: 120%; /* Increase size to cover the circle */
+  border-radius: 50%;
+  opacity: 0; /* Set opacity to make the border invisible initially */
+  transition: opacity 0.3s ease; /* Add transition for smooth effect */
+}
+
+.colors-section__circle:hover::before {
+  opacity: 0.5; /* Change opacity on hover to make the border visible */
+}
+
+.colors-section__circle.selected::before {
+  content: none; /* Remove the border when the circle is selected */
+}
+
+.colors-section__circle.selected:hover {
+  transform: scale(1);
 }
