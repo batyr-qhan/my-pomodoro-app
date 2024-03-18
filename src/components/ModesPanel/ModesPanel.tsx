@@ -20,57 +20,56 @@ const ModesPanel: React.FC<MyComponentProps> = ({
   setSeconds,
   getCurrentModeDuration,
 }) => {
+  const handleModeClick = (mode: TMode) => {
+    setCurrentMode(mode);
+    setMinutes(getCurrentModeDuration(mode));
+    setSeconds(0);
+  };
+
   return (
-    <nav className="font-bold text-[#1E213F] z-10 max-[768px]:text-[12px]">
+    <nav className="font-bold text-color-navbar-inactive-text z-10 max-[768px]:text-[12px]">
       <ul className="flex justify-around rounded-full bg-color-dark-secondary p-2 text-nowrap">
         <li
           className={`flex-1 cursor-pointer ${
-            currentMode === "pomodoro" && "bg-color-primary"
+            currentMode === "pomodoro" ? "bg-color-primary" : "bg-color-transparent"
           }  rounded-full`}
+          onClick={() => handleModeClick("pomodoro")}
         >
-          <a
-            href="#"
-            onClick={() => {
-              setCurrentMode("pomodoro");
-              setMinutes(getCurrentModeDuration("pomodoro"));
-              setSeconds(0);
-            }}
+          <span
+            className={`${
+              currentMode === "pomodoro" ? "opacity-100 text-color-dark" : ""
+            }`}
           >
             pomodoro
-          </a>
+          </span>
         </li>
         <li
           className={`flex-1 p-4 cursor-pointer rounded-full ${
-            currentMode === "shortBreak" && "bg-color-primary"
+            currentMode === "shortBreak" ? "bg-color-primary" : ""
           }`}
+          onClick={() => handleModeClick("shortBreak")}
         >
-          <a
-            href="#"
-            onClick={() => {
-              setCurrentMode("shortBreak");
-              setMinutes(getCurrentModeDuration("shortBreak"));
-              setSeconds(0);
-            }}
+          <span
+            className={`${
+              currentMode === "shortBreak" ? "opacity-100 text-color-dark" : ""
+            }`}
           >
             short break
-          </a>
+          </span>
         </li>
         <li
           className={`flex-1 p-4 cursor-pointer rounded-full ${
-            currentMode === "longBreak" && "bg-color-primary"
+            currentMode === "longBreak" ? "bg-color-primary" : ""
           }`}
+          onClick={() => handleModeClick("longBreak")}
         >
-          <a
-            href="#"
-            onClick={() => {
-              setCurrentMode("longBreak");
-              setMinutes(getCurrentModeDuration("longBreak"));
-              // setMinutes(15);
-              setSeconds(0);
-            }}
+          <span
+            className={`${
+              currentMode === "longBreak" ? "opacity-100 text-color-dark" : ""
+            }`}
           >
             long break
-          </a>
+          </span>
         </li>
       </ul>
     </nav>

@@ -3,4 +3,12 @@ ul li {
   display: flex;
   place-items: center;
   white-space: nowrap;
+  transition: background-color 0.4s ease; /* Add background-color transition here */
+}
+
+ul li span {
+  color: var(--color-navbar-inactive-text);
+  transition: color 0.4s ease;
+  opacity: 0.4;
+  
 }

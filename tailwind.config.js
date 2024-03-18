@@ -11,7 +11,7 @@ export default {
   theme: {
     colors: {
       "color-primary": "var(--color-primary)",
-      "color-dark-primary": "var(--color-dark-primary)",
+      "color-dark": "var(--color-dark)",
       "color-dark-secondary": "var(--color-dark-secondary)",
 
       "color-white": "var(--color-white)",
@@ -19,6 +19,7 @@ export default {
       "color-light-gray": "var(--color-light-gray)",
       "color-transparent": "var(--color-transparent)",
       "color-default-gray": "var(--color-default-gray)",
+      "color-navbar-inactive-text": "var(--color-navbar-inactive-text)",
     },
     fontFamily: {
       kumbhSans: ["Kumbh Sans", "sans-serif"],
