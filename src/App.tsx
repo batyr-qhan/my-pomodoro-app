@@ -146,10 +146,7 @@ function App() {
           isOpen={settingsOpen}
           onClose={() => {
             setSettingsOpen(false);
-          }}
-          // handleFormSubmit={(values) => {
-          //   console.log("hi from the button click");
-          // }}
+          }}      
         >
           <SettingsForm
             generalSettings={generalSettings}

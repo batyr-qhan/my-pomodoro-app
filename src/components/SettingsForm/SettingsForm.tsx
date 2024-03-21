@@ -88,12 +88,15 @@ const SettingsForm: React.FC<Props> = ({
         handleSubmit(e);
       }}
     >
-      <section className="px-8 pt-8 pb-12 border-b border-b-color-light-gray">
+      <section className="px-8 py-8 border-b border-b-color-light-gray max-[768px]:py-2">
         <div>
-          <h2 className="text-left tracking-[.25em] font-bold mb-6 uppercase">
+          <h2
+            className="text-left tracking-[.25em] font-bold mb-6 uppercase 
+          max-[768px]:mb-3 max-[768px]:text-center"
+          >
             Time (Minutes)
           </h2>
-          <div className="flex gap-4">
+          <div className="flex gap-6 max-[768px]:flex-col max-[768px]:gap-4">
             <NumberInputWithArrows
               name="pomodoro"
               value={formState.pomodoro.toString()}
@@ -126,7 +129,7 @@ const SettingsForm: React.FC<Props> = ({
           </div>
         </div>
       </section>
-      <section className="flex justify-between p-8 items-center border-b border-b-color-light-gray">
+      <section className="flex justify-between p-8 items-center border-b border-b-color-light-gray max-[768px]:flex-col max-[768px]:gap-4 max-[768px]:py-2">
         <h2 className="tracking-[.5em] uppercase">Font</h2>
 
         <ul className="fonts-section">
@@ -152,7 +155,7 @@ const SettingsForm: React.FC<Props> = ({
           ))}
         </ul>
       </section>
-      <section className="flex justify-between p-8 pb-16 items-center">
+      <section className="flex justify-between p-8 pb-16 items-center max-[768px]:flex-col max-[768px]:gap-4 max-[768px]:py-2 max-[768px]:pb-16">
         <h2 className="tracking-[.5em] uppercase">Color</h2>
         <ul className="colors-section">
           {["initialTheme", "theme2", "theme3"].map((theme) => (
