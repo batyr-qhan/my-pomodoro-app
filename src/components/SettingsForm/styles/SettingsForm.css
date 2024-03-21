@@ -1,7 +1,3 @@
-input[type="number"] {
-  width: 124px; /* Specify a fixed width */
-}
-
 /* Fonts Section */
 
 .fonts-section {
@@ -87,6 +83,10 @@ input[type="number"] {
 
 .colors-section__circle:hover {
   transform: scale(1.1);
+}
+
+.colors-section__circle.selected:active {
+  transform: scale(0.9) !important;
 }
 
 .colors-section__check-mark {

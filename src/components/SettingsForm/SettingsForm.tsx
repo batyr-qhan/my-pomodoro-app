@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import { Input } from "@nextui-org/react";
-
 import "./styles/SettingsForm.css";
 import { IGeneralSettings, TFont } from "../../types/types";
+
+import NumberInputWithArrows from "../NumberInputWithArrows/NumberInputWithArrows";
 
 interface Props {
   generalSettings: IGeneralSettings;
@@ -93,56 +93,35 @@ const SettingsForm: React.FC<Props> = ({
           <h2 className="text-left tracking-[.25em] font-bold mb-6 uppercase">
             Time (Minutes)
           </h2>
-          <div className="flex gap-4 input-fields">
-            <Input
-              label="pomodoro"
-              labelPlacement="outside"
+          <div className="flex gap-4">
+            <NumberInputWithArrows
               name="pomodoro"
-              type="number"
-              classNames={{
-                input: "bg-color-default-gray font-bold",
-                inputWrapper: "bg-color-default-gray",
-              }}
               value={formState.pomodoro.toString()}
-              onChange={(e) => handleInputChange("pomodoro", e.target.value)}
               min={1}
               max={60}
-              isInvalid={formErrors.pomodoro !== ""}
-              errorMessage={formErrors.pomodoro}
+              onChange={(name, value) =>
+                handleInputChange(name, value.toString())
+              }
             />
 
-            <Input
-              label="short break"
-              labelPlacement="outside"
+            <NumberInputWithArrows
               name="shortBreak"
-              type="number"
-              classNames={{
-                input: "bg-color-default-gray font-bold",
-                inputWrapper: "bg-color-default-gray",
-              }}
               value={formState.shortBreak.toString()}
-              onChange={(e) => handleInputChange("shortBreak", e.target.value)}
-              isInvalid={formErrors.shortBreak !== ""}
-              errorMessage={formErrors.shortBreak}
               min={1}
               max={15}
+              onChange={(name, value) =>
+                handleInputChange(name, value.toString())
+              }
             />
 
-            <Input
-              label="long break"
-              labelPlacement="outside"
+            <NumberInputWithArrows
               name="longBreak"
-              type="number"
-              classNames={{
-                input: "bg-color-default-gray font-bold",
-                inputWrapper: "bg-color-default-gray",
-              }}
               value={formState.longBreak.toString()}
-              onChange={(e) => handleInputChange("longBreak", e.target.value)}
-              isInvalid={formErrors.longBreak !== ""}
-              errorMessage={formErrors.longBreak}
               min={1}
               max={60}
+              onChange={(name, value) =>
+                handleInputChange(name, value.toString())
+              }
             />
           </div>
         </div>
