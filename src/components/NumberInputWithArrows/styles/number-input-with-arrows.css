@@ -30,3 +30,9 @@ input[type="number"] {
   width: 24px;
   height: 24px;
 }
+
+.error-message {
+  color: #f31260;
+  font-size: 14px;
+  margin-top: 4px;
+}

@@ -105,6 +105,8 @@ const SettingsForm: React.FC<Props> = ({
               onChange={(name, value) =>
                 handleInputChange(name, value.toString())
               }
+              isInvalid={formErrors.pomodoro !== ""}
+              errorMessage={formErrors.pomodoro}
             />
 
             <NumberInputWithArrows
@@ -115,6 +117,8 @@ const SettingsForm: React.FC<Props> = ({
               onChange={(name, value) =>
                 handleInputChange(name, value.toString())
               }
+              isInvalid={formErrors.shortBreak !== ""}
+              errorMessage={formErrors.shortBreak}
             />
 
             <NumberInputWithArrows
@@ -125,6 +129,8 @@ const SettingsForm: React.FC<Props> = ({
               onChange={(name, value) =>
                 handleInputChange(name, value.toString())
               }
+              isInvalid={formErrors.longBreak !== ""}
+              errorMessage={formErrors.longBreak}
             />
           </div>
         </div>

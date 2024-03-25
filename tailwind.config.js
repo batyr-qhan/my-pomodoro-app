@@ -20,6 +20,7 @@ export default {
       "color-transparent": "var(--color-transparent)",
       "color-default-gray": "var(--color-default-gray)",
       "color-navbar-inactive-text": "var(--color-navbar-inactive-text)",
+      "color-error": "var(--color-error)",
     },
     fontFamily: {
       kumbhSans: ["Kumbh Sans", "sans-serif"],
