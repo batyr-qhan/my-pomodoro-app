@@ -1,7 +1,8 @@
 import { CircularProgress } from "@nextui-org/react";
 import React from "react";
 
-import "./styles/timer.css";
+import "./styles/Timer.css";
+
 interface TimerProps {
   progress: number;
   minutes: number;
@@ -44,7 +45,7 @@ const Timer: React.FC<TimerProps> = ({
                   {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
                 </span>
                 <button
-                  className="absolute -bottom-12 left-0 right-0 text-color rounded-full uppercase text-lg max-[768px]:text-base tracking-[1em] indent-[1em] hover:text-color-primary transition-colors active:scale-95"
+                  className={`absolute -bottom-12 left-0 right-0 text-color rounded-full uppercase text-lg max-[768px]:text-base tracking-[1em] ${minutes < 10 ? 'indent-0' : 'indent-[1em]'} hover:text-color-primary transition-colors active:scale-95`}
                   onClick={() => {
                     if (isRunning) {
                       pauseTimer();
